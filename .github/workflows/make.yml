@@ -24,10 +24,11 @@ jobs:
 
       - name: Prepare third-party dependencies
         # 源码里写死了 #include "/home/wuyijian/simhash/..."，
-        # 因此在 runner 上按原样搭好该路径，并兼容 "json/json.h" + -ljson(jsoncpp)
+        # 因此搭好该路径并 clone 与源码匹配的旧版 simhash(v0.9.5，src/CppJieba 已内嵌)。
+        # 兼容 "json/json.h" + -ljson(jsoncpp)
         run: |
           sudo mkdir -p /home/wuyijian
-          git clone --recursive --depth 1 \
+          git clone --depth 1 --branch v0.9.5 \
             https://github.com/yanyiwu/simhash.git "$GITHUB_WORKSPACE/third_party/simhash"
           sudo ln -sfn "$GITHUB_WORKSPACE/third_party/simhash" /home/wuyijian/simhash
           # jsoncpp 头文件补成 "json/json.h" 的查找方式

@@ -25,7 +25,8 @@ if(NOT EXISTS "${SIMHASH_HOME}/src")
   message(WARNING
     "未找到第三方依赖目录 ${SIMHASH_HOME}/src：\n"
     "  源码中有硬编码的绝对 include，请先执行：\n"
-    "  git clone --recursive https://github.com/yanyiwu/simhash.git ${SIMHASH_HOME}")
+    "  git clone --depth 1 --branch v0.9.5 https://github.com/yanyiwu/simhash.git ${SIMHASH_HOME}\n"
+    "  （注意需使用与源码匹配的旧版 v0.9.5，新版目录结构已变动）")
 endif()
 
 # 编译主程序 bin/main（offline/ 是独立离线建库程序，不参与主构建）
